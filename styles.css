@@ -11,10 +11,10 @@ html {
     border: 2px solid black;
 }
 
-li {
+#li1 {
     display: inline;
     float: right;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 a {
@@ -41,4 +41,25 @@ a:visited{
 a:hover{
     color: rgb(0, 0, 0);
     text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+#logo {
+    align-content: left;
+}
+
+.li2 {
+    display: inline-block;
+    margin-left: 1vw;
+}
+
+.contact_list {
+    align-self: left;
+}
+
+p {
+    margin-top: 50px;
 }
