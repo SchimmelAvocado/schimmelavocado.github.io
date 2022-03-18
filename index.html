@@ -1,28 +1,59 @@
 <!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="schimmelavocado">
-        <title>Jonathan's Website</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="icon" href="images/_1647029124.80892_983.png">
-        <body>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+</head>
+<body>
 
-            <div class="main">
-                <ul style="padding-left: 10px;">
-                    <li id="li1"><a href="index.html">Home</a></li>
-                    <li id="li1"><a href="about.html">About</a></li>
-                    <li id="li1"><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="logo">
-                    <img style="height: 35px; margin-left: 0.5vw;" src="images/_1647029124.80892_983.png">
-                </div>
-                </div>
-                
-                <h1>Home</h1>
+    <script>
+        $('body').terminal({
+            hello: function(what) {
+                this.echo('Hello, ' + what +
+                          '. Welcome at my personal terminal!');
+            },
+            cat: function(width, height) {
+                const img = $('<img src="https://placekitten.com/' +
+                            width + '/' + height + '">');
+                        img.on('load', this.resume);
+                    this.pause();
+                this.echo(img);
+                this.echo('Meow')
+                },
+            man: function() {
+                this.echo('You can use the following commands:')
+                this.echo('$ hello [your name]')
+                this.echo('$ cat [width] [height]')
+            },
+            title: function() {
+                return fetch('https://terminal.jcubic.pl')
+                .then(r => r.text())
+                .then(html => html.match(/<title>([^>]+)<\/title>/)[1]);
+            }
+        }, {
+            greetings:  `
+███████╗ ██████╗██╗  ██╗██╗███╗   ███╗███╗   ███╗███████╗██╗      █████╗ ██╗   ██╗ ██████╗  ██████╗ █████╗ ██████╗  ██████╗ 
+██╔════╝██╔════╝██║  ██║██║████╗ ████║████╗ ████║██╔════╝██║     ██╔══██╗██║   ██║██╔═══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗
+███████╗██║     ███████║██║██╔████╔██║██╔████╔██║█████╗  ██║     ███████║██║   ██║██║   ██║██║     ███████║██║  ██║██║   ██║
+╚════██║██║     ██╔══██║██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝  ██║     ██╔══██║╚██╗ ██╔╝██║   ██║██║     ██╔══██║██║  ██║██║   ██║
+███████║╚██████╗██║  ██║██║██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║ ╚████╔╝ ╚██████╔╝╚██████╗██║  ██║██████╔╝╚██████╔╝
+╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝   ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═════╝  ╚═════╝ 
 
-        </body>
+████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     
+╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     
+   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     
+   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     
+   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
 
-    </head>
+
+type 'man'          
+                                                                                                                  
+                                     
+                        `
+        });
+        </script>
+
+</body>
 </html>
