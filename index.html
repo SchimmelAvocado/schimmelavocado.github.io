@@ -11,20 +11,26 @@
         $('body').terminal(
             {
             hello: function(what) {
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 this.echo('Hello, ' + what +
                           '. Welcome at my personal terminal!');
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
             },
             cat: function(width, height) {
                 const img = $('<img src="https://placekitten.com/' +
                             width + '/' + height + '">');
                         img.on('load', this.resume);
                     this.pause();
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 this.echo(img);
                 this.echo('Meow')
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 },
             man: function() {
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 this.echo('You can use the following commands:')
-                this.echo(' $ hello [your name]\n $ cat [width] [height]\n $ whoami')
+                this.echo(' $ hello [your name]\n $ cat [width] [height]\n $ whoami\n $ why')
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
             },
             title: function() {
                 return fetch('https://terminal.jcubic.pl')
@@ -32,11 +38,23 @@
                 .then(html => html.match(/<title>([^>]+)<\/title>/)[1]);
             },
             whoami: function(){
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 this.echo('Information about me:')
                 this.echo(' Name: Jonathan Jede\n Nationality: German\n Date of Birth: 14.June.2004\n OS:Linux\n ')
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
             },
             anonymous: function(){
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
                 this.echo('⠄⠄⠄⠄⣀⣀⣤⣤⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣦⣤⣤⣄⣀⡀⠄⠄⠄\n⠄⠄⣴⣿⣿⡿⣿⢿⣟⣿⣻⣟⡿⣟⣿⣟⡿⣟⣿⣻⣟⣿⣻⢿⣻⡿⣿⢿⣷⣆⠄\n⠄⢘⣿⢯⣷⡿⡿⡿⢿⢿⣷⣯⡿⣽⣞⣷⣻⢯⣷⣻⣾⡿⡿⢿⢿⢿⢯⣟⣞⡮⡀\n⠄⢸⢞⠟⠃⣉⢉⠉⠉⠓⠫⢿⣿⣷⢷⣻⣞⣿⣾⡟⠽⠚⠊⠉⠉⠉⠙⠻⣞⢵⠂\n⠄⢜⢯⣺⢿⣻⣿⣿⣷⣔⡄⠄⠈⠛⣿⣿⡾⠋⠁⠄⠄⣄⣶⣾⣿⡿⣿⡳⡌⡗⡅\n⠄⢽⢱⢳⢹⡪⡞⠮⠯⢯⡻⡬⡐⢨⢿⣿⣿⢀⠐⡥⣻⡻⠯⡳⢳⢹⢜⢜⢜⢎⠆\n⠠⣻⢌⠘⠌⡂⠈⠁⠉⠁⠘⠑⢧⣕⣿⣿⣿⢤⡪⠚⠂⠈⠁⠁⠁⠂⡑⠡⡈⢮⠅\n⠠⣳⣿⣿⣽⣭⣶⣶⣶⣶⣶⣺⣟⣾⣻⣿⣯⢯⢿⣳⣶⣶⣶⣖⣶⣮⣭⣷⣽⣗⠍\n⢀⢻⡿⡿⣟⣿⣻⣽⣟⣿⢯⣟⣞⡷⣿⣿⣯⢿⢽⢯⣿⣻⣟⣿⣻⣟⣿⣻⢿⣿⢀\n⠄⡑⡏⠯⡯⡳⡯⣗⢯⢟⡽⣗⣯⣟⣿⣿⣾⣫⢿⣽⠾⡽⣺⢳⡫⡞⡗⡝⢕⠕⠄\n⠄⢂⡎⠅⡃⢇⠇⠇⣃⣧⡺⡻⡳⡫⣿⡿⣟⠞⠽⠯⢧⣅⣃⠣⠱⡑⡑⠨⢐⢌⠂\n⠄⠐⠼⣦⢀⠄⣶⣿⢿⣿⣧⣄⡌⠂⠢⠩⠂⠑⣁⣅⣾⢿⣟⣷⠦⠄⠄⡤⡇⡪⠄\n⠄⠄⠨⢻⣧⡅⡈⠛⠿⠿⠿⠛⠁⠄⢀⡀⠄⠄⠘⠻⠿⠿⠯⠓⠁⢠⣱⡿⢑⠄⠄\n⠄⠄⠈⢌⢿⣷⡐⠤⣀⣀⣂⣀⢀⢀⡓⠝⡂⡀⢀⢀⢀⣀⣀⠤⢊⣼⡟⡡⡁⠄⠄\n⠄⠄⠄⠈⢢⠚⣿⣄⠈⠉⠛⠛⠟⠿⠿⠟⠿⠻⠻⠛⠛⠉⠄⣠⠾⢑⠰⠈⠄⠄⠄\n⠄⠄⠄⠄⠄⠑⢌⠿⣦⡡⣱⣸⣸⣆⠄⠄⠄⣰⣕⢔⢔⠡⣼⠞⡡⠁⠁⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠑⢝⢷⣕⡷⣿⡿⠄⠄⠠⣿⣯⣯⡳⡽⡋⠌⠄⠄⠄⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⢮⣿⣽⣯⠄⠄⢨⣿⣿⡷⡫⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠙⠝⠂⠄⢘⠋⠃⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n\nWe are not tolerating any dictatorship and warcrimes! Join us if you want to help bring peace to the Ukraine people! https://t.me/itarmyofukraine2022')
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
+            },
+            why:function(){
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
+                this.echo('Why excactly am i doing this useless shitty webpage?\n')
+                this.echo('Well, why shouldn´t i ? Having no design at all can have its positives too.\nJust enjoy not being overwhelmed by many colors and objectives, and grab some coffee while reading through my webside!\n')
+                this.echo('What´s the point of making a website if it does not look "cool"?\nIt´s not what really matters.\n\nWhat matters is the freedom gained by switching to the Linux Kernel, and start writing the first own website!')
+                this.echo('I want to encourage you to follow my, OUR path to freedom!\n\nThere are no limits, as you can see by my website.\nBeing able to create something special and unique is more than enough to satisfy the human mind.')
+                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
             }
             }, 
             {
