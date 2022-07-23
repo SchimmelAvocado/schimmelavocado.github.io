@@ -1,89 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet"> 
 </head>
+
 <body>
-
-    <script>
-        $('body').terminal(
-            {
-            hello: function(what) {
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo('Hello, ' + what +
-                          '. Welcome at my personal terminal!');
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-            },
-            cat: function(width, height) {
-                const img = $('<img src="https://placekitten.com/' +
-                            width + '/' + height + '">');
-                        img.on('load', this.resume);
-                    this.pause();
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo(img);
-                this.echo('Meow')
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                },
-            man: function() {
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo('You can use the following commands:')
-                this.echo(' $ hello [your name]\n $ cat [width] [height]\n $ whoami\n $ why\n $ popo')
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-            },
-            title: function() {
-                return fetch('https://terminal.jcubic.pl')
-                .then(r => r.text())
-                .then(html => html.match(/<title>([^>]+)<\/title>/)[1]);
-            },
-            whoami: function(){
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo('Information about me:')
-                this.echo(' Nickname: SchimmelAvocado / SchAvoc\n Nationality: German\n Date of Birth: 14.June.2004\n OS:Linux\n ')
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-            },
-            anonymous: function(){
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo('⠄⠄⠄⠄⣀⣀⣤⣤⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣦⣤⣤⣄⣀⡀⠄⠄⠄\n⠄⠄⣴⣿⣿⡿⣿⢿⣟⣿⣻⣟⡿⣟⣿⣟⡿⣟⣿⣻⣟⣿⣻⢿⣻⡿⣿⢿⣷⣆⠄\n⠄⢘⣿⢯⣷⡿⡿⡿⢿⢿⣷⣯⡿⣽⣞⣷⣻⢯⣷⣻⣾⡿⡿⢿⢿⢿⢯⣟⣞⡮⡀\n⠄⢸⢞⠟⠃⣉⢉⠉⠉⠓⠫⢿⣿⣷⢷⣻⣞⣿⣾⡟⠽⠚⠊⠉⠉⠉⠙⠻⣞⢵⠂\n⠄⢜⢯⣺⢿⣻⣿⣿⣷⣔⡄⠄⠈⠛⣿⣿⡾⠋⠁⠄⠄⣄⣶⣾⣿⡿⣿⡳⡌⡗⡅\n⠄⢽⢱⢳⢹⡪⡞⠮⠯⢯⡻⡬⡐⢨⢿⣿⣿⢀⠐⡥⣻⡻⠯⡳⢳⢹⢜⢜⢜⢎⠆\n⠠⣻⢌⠘⠌⡂⠈⠁⠉⠁⠘⠑⢧⣕⣿⣿⣿⢤⡪⠚⠂⠈⠁⠁⠁⠂⡑⠡⡈⢮⠅\n⠠⣳⣿⣿⣽⣭⣶⣶⣶⣶⣶⣺⣟⣾⣻⣿⣯⢯⢿⣳⣶⣶⣶⣖⣶⣮⣭⣷⣽⣗⠍\n⢀⢻⡿⡿⣟⣿⣻⣽⣟⣿⢯⣟⣞⡷⣿⣿⣯⢿⢽⢯⣿⣻⣟⣿⣻⣟⣿⣻⢿⣿⢀\n⠄⡑⡏⠯⡯⡳⡯⣗⢯⢟⡽⣗⣯⣟⣿⣿⣾⣫⢿⣽⠾⡽⣺⢳⡫⡞⡗⡝⢕⠕⠄\n⠄⢂⡎⠅⡃⢇⠇⠇⣃⣧⡺⡻⡳⡫⣿⡿⣟⠞⠽⠯⢧⣅⣃⠣⠱⡑⡑⠨⢐⢌⠂\n⠄⠐⠼⣦⢀⠄⣶⣿⢿⣿⣧⣄⡌⠂⠢⠩⠂⠑⣁⣅⣾⢿⣟⣷⠦⠄⠄⡤⡇⡪⠄\n⠄⠄⠨⢻⣧⡅⡈⠛⠿⠿⠿⠛⠁⠄⢀⡀⠄⠄⠘⠻⠿⠿⠯⠓⠁⢠⣱⡿⢑⠄⠄\n⠄⠄⠈⢌⢿⣷⡐⠤⣀⣀⣂⣀⢀⢀⡓⠝⡂⡀⢀⢀⢀⣀⣀⠤⢊⣼⡟⡡⡁⠄⠄\n⠄⠄⠄⠈⢢⠚⣿⣄⠈⠉⠛⠛⠟⠿⠿⠟⠿⠻⠻⠛⠛⠉⠄⣠⠾⢑⠰⠈⠄⠄⠄\n⠄⠄⠄⠄⠄⠑⢌⠿⣦⡡⣱⣸⣸⣆⠄⠄⠄⣰⣕⢔⢔⠡⣼⠞⡡⠁⠁⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠑⢝⢷⣕⡷⣿⡿⠄⠄⠠⣿⣯⣯⡳⡽⡋⠌⠄⠄⠄⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⢮⣿⣽⣯⠄⠄⢨⣿⣿⡷⡫⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄\n⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⠙⠝⠂⠄⢘⠋⠃⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄\n\nWe are not tolerating any dictatorship and warcrimes! Join us if you want to help bring peace to the Ukraine people! https://t.me/itarmyofukraine2022')
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-            },
-            why:function(){
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-                this.echo('Why excactly am i doing this useless shitty webpage?\n')
-                this.echo('Well, why shouldn´t i ? Having no design at all can have its positives too.\nJust enjoy not being overwhelmed by many colors and objectives, and grab some coffee while reading through my webside!\n')
-                this.echo('What´s the point of making a website if it does not look "cool"?\nIt´s not what really matters.\n\nWhat matters is the freedom gained by switching to the Linux Kernel, and start writing the first own website!')
-                this.echo('I want to encourage you to follow my, OUR path to freedom!\n\nThere are no limits, as you can see by my website.\nBeing able to create something special and unique is more than enough to satisfy the human mind.')
-                this.echo('★━━━━━━━━━━━━━━━━━━━━★')
-            },
-            popo:function(){
-                this.echo('popo hehehehehe ( )( )')
-            }
-            }, 
-            {
-            greetings:  `
-
-███████╗ ██████╗██╗  ██╗██╗███╗   ███╗███╗   ███╗███████╗██╗      █████╗ ██╗   ██╗ ██████╗  ██████╗ █████╗ ██████╗  ██████╗ 
-██╔════╝██╔════╝██║  ██║██║████╗ ████║████╗ ████║██╔════╝██║     ██╔══██╗██║   ██║██╔═══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗
-███████╗██║     ███████║██║██╔████╔██║██╔████╔██║█████╗  ██║     ███████║██║   ██║██║   ██║██║     ███████║██║  ██║██║   ██║
-╚════██║██║     ██╔══██║██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝  ██║     ██╔══██║╚██╗ ██╔╝██║   ██║██║     ██╔══██║██║  ██║██║   ██║
-███████║╚██████╗██║  ██║██║██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║ ╚████╔╝ ╚██████╔╝╚██████╗██║  ██║██████╔╝╚██████╔╝
-╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝   ╚═════╝  ╚═════╝╚═╝  ╚═╝╚═════╝  ╚═════╝ 
-
-
-████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗      
-╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║      
-   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║         
-   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║         
-   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗    
-   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝    
-
-
-type 'man'                                                                                                                                                       
-                        `
-        }
-        );
-        </script>
-
+    <div class= "content">
+        <h1 style="font-family: 'Rajdhani', sans-serif;font-size: 50px;">Jonathan Jede</h1>
+        <br>
+        <h2 style="font-family: 'Rajdhani', sans-serif;font-size: 30px;">Developer, White Hat Hacker</h2>
+        <div class nav>
+            <ul>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Social Media</li>
+            </ul>
+        </div>
+    </div>
 </body>
+
 </html>
