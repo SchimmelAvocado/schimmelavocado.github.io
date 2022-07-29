@@ -3,7 +3,6 @@ body{
     margin: 0;
 }
 section{
-    height: 400px;
     background-color: white;
     border: solid black 2px;
 }
@@ -34,7 +33,7 @@ ul{
 
 li{
     text-decoration: none;
-    font-size: 30px;
+    font-size: calc(14px + 1.2vw);
 }
 p{
     margin-top: 0px;
@@ -98,4 +97,25 @@ h1{
 }
 .imggit:active{
     background-color: rgb(16, 16, 17);
+}
+
+.information{
+    width: 100%;
+}
+.sub{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    background: url("images/code-text-programming-letters-symbols-0b6excz2s1qz1koa.jpg");
+    background-size: cover;
+    color: white;
+}
+
+h2{
+    font-size: 30px;
+}
+.pic{
+    width: 30vw;
+    max-width: 300px;
+    border-radius: 20px ;
 }
